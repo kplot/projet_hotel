@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading"><p></p><%= @hotel.name %></p></h4>
+    <p class="list-group-item-text"><p><%= @hotel.description %></p></p>
+     <%= link_to  hotels_path do %>
+        <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+    <% end %>
+    <%= link_to new_hotel_room_path(@hotel)  do %>   
+       <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <% end %>
+    <%= link_to edit_hotel_path(@hotel) do %>
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    <% end %>
+  </a>
+  
+</div>
+<% if @hotel.rooms.size > 0 %>
+    <ul>
+        <% @hotel.rooms.each do |room| %>
+            <div class="list-group">
+                 <%= link_to edit_hotel_room_path(@hotel, room) do %>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                <% end %>
+                <%= link_to hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                <% end %>
+                <a href="#" class="list-group-item disabled"><%= room.id %></a>
+                <a href="#" class="list-group-item disabled"><%= room.name %></a>
+                <a href="#" class="list-group-item disabled"><%= room.description %></a>
+            </div>
+        <% end %>
+    </ul>
+<% else %>
+    <h4 class="list-group-item-heading"><p></p>No room already exists</p></h4>
+<% end %>

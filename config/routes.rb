@@ -53,5 +53,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :hotels
+  resources :hotels do
+    resources :rooms, except: [:index, :show]
+  end
 end

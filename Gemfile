@@ -38,6 +38,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 #heroku
 gem 'rails_12factor', group: :production
 
+#Devise autentication
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -4,7 +4,8 @@ class HotelsController < ApplicationController
   # GET /hotels
   # GET /hotels.json
   def index
-    @hotels = Hotel.all.order(:name)
+    @q = Hotel.ransack(params[:q])
+    @hotels = @q.result(distinct: true).order(:name)
   end
 
   # GET /hotels/1

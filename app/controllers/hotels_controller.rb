@@ -4,7 +4,8 @@ class HotelsController < ApplicationController
   # GET /hotels
   # GET /hotels.json
   def index
-    @hotels = Hotel.all.order(:name)
+    @q = Hotel.ransack(params[:q])
+    @hotels = @q.result(distinct: true).order(:name)
   end
 
   # GET /hotels/1
@@ -60,11 +61,7 @@ class HotelsController < ApplicationController
       format.json { head :no_content }
     end
   end
-#Research  
-def index
-  @q = Hotel.ransack(params[:q])
-  @Hotels = @q.result(distinct: true)
-end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hotel

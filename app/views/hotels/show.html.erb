@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td><%= @hotel.name %></td>
+            <td><%= @hotel.description %></td>
+        </tr>
+    </tbody>
+</table>
+   
+<%= link_to 'Edit', edit_hotel_path(@hotel) %> |
+<%= link_to 'Back', hotels_path %>

@@ -60,7 +60,11 @@ class HotelsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+#Research  
+def index
+  @q = Hotel.ransack(params[:q])
+  @Hotels = @q.result(distinct: true)
+end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hotel

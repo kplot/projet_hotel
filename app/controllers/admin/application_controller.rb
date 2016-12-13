@@ -9,7 +9,8 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      # redirect_to root_url unless current_user.try(:admin)
+      redirect_to root_url unless current_user.sup_admin
+      #redirect_to root_url unless current_user.try(:admin)
       # TODO Add authentication logic here.
     end
 

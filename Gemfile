@@ -38,6 +38,17 @@ gem 'bootstrap-sass', '~> 3.3.6'
 #heroku
 gem 'rails_12factor', group: :production
 
+#Devise authentication
+gem 'devise'
+
+# Authentification email mailgun
+gem 'mailgun-ruby', '~>1.1.2'
+
+#ADD administrate
+gem "administrate", "~> 0.3.0"
+
+#ADD bourbon
+gem "bourbon"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

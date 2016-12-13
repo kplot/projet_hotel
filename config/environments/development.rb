@@ -38,4 +38,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  # set up the default URL options for the Devise mailer in each environment.
+  config.action_mailer.smtp_settings = {
+   :address              => "smtp.mailgun.org",
+   :port                 => 587,
+   :domain               => 'sandboxadcf6a14d5ba416bbf6dfc3f331fe627.mailgun.org',
+   :user_name            => 'postmaster@sandboxadcf6a14d5ba416bbf6dfc3f331fe627.mailgun.org',
+   :password             => '98bfd8d16f4ec7f37a3285f0f4d58393',
+   :authentication       => :plain,
+   :enable_starttls_auto => true
+  }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
 end

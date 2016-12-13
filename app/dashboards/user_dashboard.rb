@@ -25,6 +25,7 @@ class UserDashboard < Administrate::BaseDashboard
     unconfirmed_email: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    role: EnumField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -40,6 +41,8 @@ class UserDashboard < Administrate::BaseDashboard
     :sign_in_count,
     :last_sign_in_at,
     :reset_password_sent_at,
+    :created_at,
+    :role,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -57,11 +60,12 @@ class UserDashboard < Administrate::BaseDashboard
   #  :current_sign_in_ip,
   #  :last_sign_in_ip,
     :confirmation_token,
-  #  :confirmed_at,
+    :confirmed_at,
     :confirmation_sent_at,
   #  :unconfirmed_email,
     :created_at,
     :updated_at,
+    :role,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -79,9 +83,10 @@ class UserDashboard < Administrate::BaseDashboard
   #  :current_sign_in_ip,
   #  :last_sign_in_ip,
     :confirmation_token,
-  #  :confirmed_at,
+    :confirmed_at,
     :confirmation_sent_at,
   #  :unconfirmed_email,
+    :role,
   ].freeze
 
   # Overwrite this method to customize how users are displayed

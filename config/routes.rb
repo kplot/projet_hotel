@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users
     resources :hotels
     resources :rooms
+    resources :reservations
 
     root to: "users#index"
  
@@ -69,6 +70,9 @@ Rails.application.routes.draw do
   resources :charges
   
   resources :hotels do
-    resources :rooms, except: [:index, :show]
+    resources :rooms, except: [:index, :show] do
+      resources :reservations 
+    end
   end
+ 
 end

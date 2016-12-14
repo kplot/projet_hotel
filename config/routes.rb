@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -74,5 +75,13 @@ Rails.application.routes.draw do
       resources :reservations 
     end
   end
+  
+  scope '/reservations/:reservation_id', as: 'reservations' do
+     devise_for :users, controllers: {
+       sessions: 'reservations/sessions',
+       registrations: 'reservations/registrations'
+     }
+  end
+  
  
 end

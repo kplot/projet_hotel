@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update, :destroy]
   before_action :set_hotel
-  before_action :set_reservation
+
   
   
   # GET /rooms
@@ -74,9 +74,9 @@ class RoomsController < ApplicationController
       @hotel = Hotel.find(params[:hotel_id])
     end
     
-    def set_reservation
-        @reservation = reservation.find(params[:reservation_id])
-    end
+    #def set_reservation
+     #   @reservation = reservation.find(params[:reservation_id])
+    #end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params

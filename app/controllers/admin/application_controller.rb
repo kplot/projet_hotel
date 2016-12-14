@@ -6,10 +6,11 @@
 # you're free to overwrite the RESTful controller actions.
 module Admin
   class ApplicationController < Administrate::ApplicationController
+    before_action :authenticate_user!
     before_action :authenticate_admin
 
     def authenticate_admin
-      redirect_to root_url unless current_user.sup_admin
+      redirect_to root_url unless current_user.sup_admin?
       #redirect_to root_url unless current_user.try(:admin)
       # TODO Add authentication logic here.
     end

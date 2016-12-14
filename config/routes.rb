@@ -62,5 +62,7 @@ Rails.application.routes.draw do
   #   end
   resources :hotels do
     resources :rooms, except: [:index, :show]
+  
+  resources :reservations  
   end
 end

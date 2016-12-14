@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -64,6 +64,10 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
+  #ADD stripe route
+  resources :charges
+  
   resources :hotels do
     resources :rooms, except: [:index, :show]
   end

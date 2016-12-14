@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :users
+    resources :hotels
+    resources :rooms
 
     root to: "users#index"
+ 
   end
 
   devise_for :users
@@ -11,6 +14,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

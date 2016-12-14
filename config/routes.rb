@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :users
+    resources :reservations
 
     root to: "users#index"
   end
@@ -61,8 +62,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :hotels do
-    resources :rooms, except: [:index, :show]
-  
-  resources :reservations  
+    resources :rooms, except: [:index, :show] do
+      resources :reservations 
+    end
   end
+ 
 end

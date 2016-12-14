@@ -1,2 +1,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+.logo {
+    height:50px;
+}
+.background-home {
+    margin: 0 auto;
+    padding: 0;
+    background: asset-url('welcome.jpg') no-repeat center fixed; 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+    height: 800px;
+    margin-bottom: 30px;
+}
+
+.navbar-default {
+    margin-bottom: 0px;
+}
+
+.text_image {
+    color: white;
+    text-align: center;
+}
+
+.taille_h1 {
+    font-size: 60px;
+}
+

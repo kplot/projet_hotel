@@ -18,7 +18,7 @@ Ce projet à pour but de proposer une solution clée en main de gestion d'hôtel
     ### 3. Recherche
         gem : ransack    
     ### 4. Paiement
-        gem : stripe + création compte
+        gem : stripe (voir money-rails) + création compte
     ###5. Service de mail de confirmation
         gem : mailgun + création compte
     ###6. Formulaire de contact 

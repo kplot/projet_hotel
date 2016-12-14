@@ -17,6 +17,9 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
+    if user_signed_in?
+      @user.mail = current_user.firstname
+    end  
   end
 
   # GET /reservations/1/edit
@@ -26,18 +29,26 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new
     @reservation.room = @room
+    @reservation.user = current_user if user_signed_in?
+  
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        if user_signed_in?
+             format.html { redirect_to charges_path, notice: 'Reservation was successfully created.' }
+             
+           else
+             format.html {redirect_to new_reservations_user_registration_path(@reservation), notice: 'Reservation was successfully created.' }
+        end 
+       
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
         format.json { render json: @reservation.errors, status: :unprocessable_entity }
       end
-    end
   end
+  
 
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
@@ -52,6 +63,7 @@ class ReservationsController < ApplicationController
       end
     end
   end
+end
 
   # DELETE /reservations/1
   # DELETE /reservations/1.json
@@ -70,16 +82,11 @@ class ReservationsController < ApplicationController
       @hotel = Hotel.find(params[:hotel_id])
     end
     
-     def set_room
+    def set_room
       @room = Room.find(params[:room_id])
     end
     
-      def set_reservation
+    def set_reservation
       @reservation = Reservation.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reservation_params
-      params.fetch(:reservation, {})
     end
 end

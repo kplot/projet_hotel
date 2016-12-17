@@ -1,16 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Hotels</h1>
+<h1>Liste de nos hôtels</h1>
 
-<%= search_form_for @q do |f| %>
+<div style="text-align:right;">
+  
+  <%= search_form_for @q do |f| %>
 
-  <%= f.label :name_cont %>
+  <%= f.label :rechercher_un_hôtel %>
   <%= f.search_field :name_cont %>
 
   <%= f.submit %>
-<% end %>
+  <% end %>
+  
+</div>
 
-<table class= 'table'>
+
+<table class='table table-bordered table-hover table_hotel'>
   <thead>
     <tr>
     <th>Name</th>  
@@ -32,6 +37,7 @@
   </tbody>
 </table>
 
-<br>
+<div style="margin-bottom:8cm;">
+  <%= link_to 'Ajouter un hôtel', new_hotel_path %>
+</div>
 
-<%= link_to 'New Hotel', new_hotel_path %>

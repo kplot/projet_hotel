@@ -28,7 +28,7 @@
                 <a href="#" class="list-group-item disabled"><%= room.id %></a>
                 <a href="#" class="list-group-item disabled"><%= room.name %></a>
                 <a href="#" class="list-group-item disabled"><%= room.description %></a>
-                <a href="#" class="list-group-item disabled"><%= room.price %></a>
+                <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
                 <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
             </div>
         <% end %>

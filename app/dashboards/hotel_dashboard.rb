@@ -18,6 +18,7 @@ class HotelDashboard < Administrate::BaseDashboard
     homepage: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    user: Field::BelongsTo
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,6 +28,7 @@ class HotelDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :rooms,
+    :user,
     :id,
     :name,
     :description,
@@ -37,6 +39,7 @@ class HotelDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :rooms,
     :id,
+    :user,
     :name,
     :description,
     :phone,
@@ -52,6 +55,7 @@ class HotelDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :rooms,
+    :user,
     :name,
     :description,
     :phone,
@@ -66,4 +70,5 @@ class HotelDashboard < Administrate::BaseDashboard
   def display_resource(hotel)
     "#{hotel.name}"
   end
+
 end

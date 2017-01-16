@@ -68,13 +68,18 @@ Rails.application.routes.draw do
   #   end
   
   #ADD stripe route
-  resources :charges
+  
   
   resources :hotels do
     resources :rooms, except: [:index, :show] do
       resources :reservations 
     end
   end
+  
+  resources :reservations do
+    resources :charges
+  end
+  
   
   scope '/reservations/:reservation_id', as: 'reservations' do
      devise_for :users, controllers: {

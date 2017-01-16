@@ -39,9 +39,8 @@
   <tbody>
     <% @hotels.each do |hotel| %>
       <tr>
-        
+       
         <% if user_signed_in? && current_user.sup_admin? %>
-        
           <td><%= link_to hotel.name, hotel %></td>
           <td><%= hotel.description %></td>
           <td><%= link_to 'Show', hotel %></td>

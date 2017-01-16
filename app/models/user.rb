@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
   enum role: { customer: 'customer', admin: 'admin', sup_admin: 'sup_admin' }
+  
+  has_many :hotels
 end

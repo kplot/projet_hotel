@@ -29,7 +29,7 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-    @reservation = Reservation.new
+    @reservation = Reservation.new(reservation_params)
     @reservation.room = @room
     @reservation.user = current_user if user_signed_in?
   
@@ -88,5 +88,9 @@ end
     
     def set_reservation
       @reservation = Reservation.find(params[:id])
+    end
+    
+    def reservation_params
+      params.fetch(:reservation).permit(:arrived_at, :leaved_at)
     end
 end

@@ -7,7 +7,6 @@ class ChargesController < ApplicationController
     def create
       # Amount in cents
       @reservation = Reservation.find(params[:reservation_id])
-      @room = @reservation.room
     
       customer = Stripe::Customer.create(
         :email => params[:stripeEmail],
@@ -16,7 +15,7 @@ class ChargesController < ApplicationController
     
       charge = Stripe::Charge.create(
         :customer    => customer.id,
-        :amount      => @room.price * 100,
+        :amount      => @reservation.totalprice_cents,
         :description => 'Rails Stripe customer',
         :currency    => 'usd'
       )

@@ -6,13 +6,13 @@
       </div>
     <% end %>
     <label class="amount">
-      <span><%= @room.price %></span>
+      <span><%= @reservation.totalprice %></span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Paiement de votre réservation"
-          data-amount="<%= @room.price * 100 %>"
+          data-amount="<%= @reservation.totalprice_cents %>"
           data-locale="auto"></script>
 <% end %>

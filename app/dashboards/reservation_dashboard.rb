@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class RoomDashboard < Administrate::BaseDashboard
+class ReservationDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,14 +8,14 @@ class RoomDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    hotel: Field::BelongsTo,
+    user: Field::BelongsTo,
+    room: Field::BelongsTo,
     id: Field::Number,
-    name: Field::String,
-    description: Field::String,
-    price: Field::Number,
-    kind: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    totalprice: Field::Number,
+    arrived_at: Field::DateTime,
+    leaved_at: Field::DateTime,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -24,41 +24,41 @@ class RoomDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :hotel,
+    :user,
+    :room,
     :id,
-    :price,
-    :name,
-    :description,
+    :created_at,
+    :totalprice,
+    :arrived_at,
+    :leaved_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :hotel,
+    :user,
+    :room,
     :id,
-    :name,
-    :description,
-    :price,
-    :kind,
     :created_at,
     :updated_at,
+    :arrived_at,
+    :leaved_at,
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :hotel,
-    :name,
-    :description,
-    :price,
-    :kind,
+    :user,
+    :room,
+    :arrived_at,
+    :leaved_at,
   ].freeze
 
-  # Overwrite this method to customize how rooms are displayed
+  # Overwrite this method to customize how reservations are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(room)
-     "#{room.name}"
-  end
+  # def display_resource(reservation)
+  #   "Reservation ##{reservation.id}"
+  # end
 end

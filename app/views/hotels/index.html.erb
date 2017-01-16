@@ -27,7 +27,7 @@
   <tbody>
     <% @hotels.each do |hotel| %>
       <tr>
-        <td><%= hotel.name %></td>
+        <td><%= link_to hotel.name, hotel %></td>
         <td><%= hotel.description %></td>
         <td><%= link_to 'Show', hotel %></td>
         <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>

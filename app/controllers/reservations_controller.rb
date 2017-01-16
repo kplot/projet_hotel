@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     if user_signed_in?
-      @user.mail = current_user.firstname
+     @reservation.user = current_user if user_signed_in?
     end  
   end
 
@@ -36,7 +36,7 @@ class ReservationsController < ApplicationController
     respond_to do |format|
       if @reservation.save
         if user_signed_in?
-             format.html { redirect_to charges_path, notice: 'Reservation was successfully created.' }
+             format.html { redirect_to new_charge_path, notice: 'Reservation was successfully created.' }
              
            else
              format.html {redirect_to new_reservations_user_registration_path(@reservation), notice: 'Reservation was successfully created.' }

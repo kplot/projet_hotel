@@ -5,7 +5,19 @@ class HotelsController < ApplicationController
   # GET /hotels
   # GET /hotels.json
   def index
-    @q = Hotel.ransack(params[:q])
+
+    if user_signed_in? 
+      case current_user.role
+      when 'admin' 
+        @q = current_user.hotels.ransack(params[:q])
+      else 
+        @q = Hotel.all.ransack(params[:q])
+      end
+    
+    else 
+      @q = Hotel.all.ransack(params[:q])
+    end
+    
     @hotels = @q.result(distinct: true).order(:name)
   end
 

@@ -59,6 +59,9 @@ gem 'stripe', "~>1.57.1"
 #ADD datepicket
 gem 'bootstrap-datepicker-rails'
 
+#ADD PaperClip
+gem 'paperclip', "~> 5.0.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

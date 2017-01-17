@@ -2,41 +2,41 @@
 <div class="list-group">
     
   <a href="#" class="list-group-item active">
-    <h4 class="list-group-item-heading"><p></p><%= @hotel.name %></p></h4>
-    <p class="list-group-item-text"><p><%= @hotel.description %></p></p>
-    <p><%= image_tag @hotel.photo(:medium) %></p>
+        <div class='text-center'>
+            <h1 class="list-group-item-heading"><%= @hotel.name %></h1>
+            <p class="list-group-item-text"><p><%= @hotel.description %></p></p>
+        </div>    
+            <%= image_tag @hotel.photo(:medium) %>
     
-      <% if user_signed_in? && current_user.sup_admin? %>
-      
-        <%= link_to  hotels_path do %>
-            <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
-        <% end %>
-        <%= link_to new_hotel_room_path(@hotel)  do %>   
-           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        <% end %>
-        <%= link_to edit_hotel_path(@hotel) do %>
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        <% end %>
+          <% if user_signed_in? && current_user.sup_admin? %>
+          
+            <%= link_to  'Retour', hotels_path %> |
+
+            <%= link_to 'Ajouter une chambre', new_hotel_room_path(@hotel) %> |  
+
+            <%= link_to "Modifier l'hôtel", edit_hotel_path(@hotel) %>
+
+            
+          <% elsif user_signed_in? && current_user.admin? %>
+          
+            <%= link_to  hotels_path do %>
+                <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+            <% end %>
+            <%= link_to new_hotel_room_path(@hotel)  do %>   
+               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <% end %>
+            <%= link_to edit_hotel_path(@hotel) do %>
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <% end %>
+          
+          <% else %>
         
-      <% elsif user_signed_in? && current_user.admin? %>
-      
-        <%= link_to  hotels_path do %>
-            <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
-        <% end %>
-        <%= link_to new_hotel_room_path(@hotel)  do %>   
-           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        <% end %>
-        <%= link_to edit_hotel_path(@hotel) do %>
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        <% end %>
-      
-      <% else %>
-    
-        <%= link_to  hotels_path do %>
-            <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
-        <% end %>
-    
-      <% end %>    
+            <%= link_to  hotels_path do %>
+                <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+            <% end %>
+        
+          <% end %> 
+ 
   </a>
 
   
@@ -44,58 +44,88 @@
 <% if @hotel.rooms.size > 0 %>
     <ul>
         <% @hotel.rooms.each do |room| %>
+        
             <div class="list-group">
                 
                 <% if user_signed_in? && current_user.sup_admin? %>
                 
-                    <%= link_to edit_hotel_room_path(@hotel, room) do %>
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    <% end %>
-                    <%= link_to hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    <% end %>
-                    
-                    <table>
-                      <tr>    
-                        <td><a href="#" class="list-group-item disabled"><%= room.name %></a>
-                        <a href="#" class="list-group-item disabled"><%= room.description %></a>
-                        <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
-                        <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a></td>
-                      </tr> 
-                    </table>   
-                  
-                    <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
-
+                 <div class="row text-center">
+                    <div class="col-xs-12 col-md-2 col-md-offset-5 text-center">
+                        <div class="panel panel-success panel-pricing">
+                            <div class="panel-body text-center">               
+                                <table>
+                                    <tr>    
+                                        <td>
+                                            
+                                            <%= link_to edit_hotel_room_path(@hotel, room) do %>
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            <% end %>
+                                            
+                                            <%= link_to hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <% end %>
+    
+                                            <a href="#" class="list-group-item disabled"><%= room.name %></a>
+                                            <a href="#" class="list-group-item disabled"><%= room.description %></a>
+                                            <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
+                                            <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a>
+                                            <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
+                                            
+                                         </td>
+                                      </tr> 
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <% elsif user_signed_in? && current_user.admin? %>
-                
-                    <%= link_to edit_hotel_room_path(@hotel, room) do %>
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    <% end %>
-                    <%= link_to hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    <% end %>
-                    <table>
-                      <tr>
-                        <td><a href="#" class="list-group-item disabled"><%= room.name %></a>
-                        <a href="#" class="list-group-item disabled"><%= room.description %></a>
-                        <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
-                        <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a></td>
-                      </tr> 
-                    </table>
-                    <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
-     
+                <div class="row text-center">
+                    <div class="col-xs-12 col-md-2 col-md-offset-5 text-center">
+                        <div class="panel panel-success panel-pricing">
+                            <div class="panel-body text-center">               
+                                <table>
+                                    <tr>    
+                                        <td>
+                                            <%= link_to edit_hotel_room_path(@hotel, room) do %>
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            <% end %>
+                                            <%= link_to hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                               <% end %>
+
+                                            <a href="#" class="list-group-item disabled"><%= room.name %></a>
+                                            <a href="#" class="list-group-item disabled"><%= room.description %></a>
+                                            <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
+                                            <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a>
+
+                                            <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
+                                         </td>
+                                      </tr> 
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <% else %>
-                
-                    <table>
-                      <tr>   
-                        <td><a href="#" class="list-group-item disabled"><%= room.name %></a>
-                        <a href="#" class="list-group-item disabled"><%= room.description %></a>
-                        <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
-                        <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a></td>
-                       </tr> 
-                  </table> 
-                    <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
-                    
+                <div class="row text-center">
+                    <div class="col-xs-12 col-md-2 col-md-offset-5 text-center">
+                        <div class="panel panel-success panel-pricing">
+                            <div class="panel-body text-center">               
+                                <table>
+                                    <tr>    
+                                        <td>
+                                            <a href="#" class="list-group-item disabled"><%= room.name %></a>
+                                            <a href="#" class="list-group-item disabled"><%= room.description %></a>
+                                            <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
+                                            <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a>
+                                            <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
+                                         </td>
+                                      </tr> 
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <% end %>
             </div>

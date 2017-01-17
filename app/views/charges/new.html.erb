@@ -1,5 +1,4 @@
 <%= form_tag reservation_charges_path do %>
- <%= render partial: 'shared/header' %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -7,13 +6,14 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Résumé de votre reservation pour l'hôtel....</span><br>
-      <span>Vos coordonnées....</span><br>
-      <span>Type de chambre "<%= @room.name %>" </span><br>
-      <span>Pour la période du <%= @reservation.arrived_at %> au <%= @reservation.leaved_at %></span><br>
-      <span>Prix d'une nuitée <%= @room.price %>$</span><br>
-      <span>Nombre de nuit <%= @reservation.nbnuit %></span><br>
-      <span>Prix total de votre réservation <%= @reservation.totalprice %>$</span>
+          <h2>Récapitulatif de votre réservation</h2>
+              <span>Résumé de votre reservation pour l'hôtel....</span><br>
+              <span>Vos coordonnées....</span><br>
+              <span>Type de chambre "<%= @room.name %>" </span><br>
+              <span>Pour la période du <%= @reservation.arrived_at %> au <%= @reservation.leaved_at %></span><br>
+              <span>Prix d'une nuitée <%= @room.price %>$</span><br>
+              <span>Nombre de nuit <%= @reservation.nbnuit %></span><br>
+              <span>Prix total de votre réservation <%= @reservation.totalprice %>$</span>
     </label>
   </article>
 

@@ -47,7 +47,7 @@ gem 'mailgun-ruby', '~>1.1.2'
 #ADD administrate
 gem "administrate", "~> 0.3.0"
 
-#ADD bourbon
+#ADD bourbon for administrate
 gem "bourbon"
 
 #ADD Ransack

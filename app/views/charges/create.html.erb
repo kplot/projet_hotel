@@ -1,1 +1,6 @@
-<h2>Thanks, you paid <strong><%= @room.price %></strong>!</h2>
+<%= link_to root_path do %>
+    <% image_tag("logo.PNG", :class => "logo") %>
+<% end %>
+  
+<h2>Thanks, you paid <strong><%= @reservation.totalprice %> $</strong>!</h2>
+

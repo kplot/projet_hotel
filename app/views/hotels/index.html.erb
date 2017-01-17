@@ -3,7 +3,7 @@
 <div style="text-align:right;">
   <%= search_form_for @q do |f| %>
   <%= f.label :rechercher_un_hôtel %>
-  <%= f.search_field :name_cont %>
+  <%= f.search_field :address_cont %>
   <%= f.submit %>
   <% end %>
 </div>
@@ -14,11 +14,13 @@
         <th class="sizeColumnfirst">Photo</th> 
         <th>Name</th>  
         <th>Description</th>
+        <th>Ville</th>
         <th colspan="3">Actions</th>
       <% else %>
         <th class="sizeColumnfirst">Photo</th> 
         <th>Name</th>  
         <th>Description</th>
+        <th>Ville</th>
       <% end %>  
     </tr>
   </thead>
@@ -32,6 +34,7 @@
           </td>
           <td><%= link_to hotel.name, hotel %></td>
           <td><%= hotel.description %></td>
+          <td><%= hotel.address %></td>
           <td><%= link_to 'Show', hotel %></td>
           <td><%= link_to 'Edit', edit_hotel_path(hotel) %></td>
           <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -42,6 +45,7 @@
           </td>
           <td><%= link_to hotel.name, hotel %></td>
           <td><%= hotel.description %></td>
+          <td><%= hotel.address %></td>
         <% end %>
       </tr>
     <% end %>

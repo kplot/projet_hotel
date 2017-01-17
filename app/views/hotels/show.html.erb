@@ -55,14 +55,14 @@
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     <% end %>
                     
-                  <table>
+                    <table>
                       <tr>    
                         <td><a href="#" class="list-group-item disabled"><%= room.name %></a>
                         <a href="#" class="list-group-item disabled"><%= room.description %></a>
                         <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
                         <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a></td>
                       </tr> 
-                  </table>   
+                    </table>   
                   
                     <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
 
@@ -74,23 +74,29 @@
                     <%= link_to hotel_room_path(@hotel, room), method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     <% end %>
-                   
-                    <a href="#" class="list-group-item disabled"><%= room.name %></a>
-                    <a href="#" class="list-group-item disabled"><%= room.description %></a>
-                    <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
-                    <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a>
+                    <table>
+                      <tr>
+                        <td><a href="#" class="list-group-item disabled"><%= room.name %></a>
+                        <a href="#" class="list-group-item disabled"><%= room.description %></a>
+                        <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
+                        <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a></td>
+                      </tr> 
+                    </table>
                     <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
-                    
+     
                 <% else %>
                 
-                  
-                    <a href="#" class="list-group-item disabled"><%= room.name %></a>
-                    <a href="#" class="list-group-item disabled"><%= room.description %></a>
-                    <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
-                    <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a>
+                    <table>
+                      <tr>   
+                        <td><a href="#" class="list-group-item disabled"><%= room.name %></a>
+                        <a href="#" class="list-group-item disabled"><%= room.description %></a>
+                        <a href="#" class="list-group-item disabled"><%= room.price %>€</a>
+                        <a href="#" class="list-group-item disabled"><%= image_tag room.photo(:medium) %></a></td>
+                       </tr> 
+                  </table> 
                     <%= link_to 'Nouvelle reservation', new_hotel_room_reservation_path(@hotel, room)%>
                     
-                  
+
                 <% end %>
             </div>
         <% end %>

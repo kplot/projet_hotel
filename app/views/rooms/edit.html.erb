@@ -1,6 +1,8 @@
-<h1>Editing Room</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', [@hotel, @room] %> |
-<%= link_to 'Back', @hotel %>
+<div class="formulaire_center formulaire_margin2">
+  <div class="bloc">
+      <h2>Modifer la chambre</h2>
+        <%= render 'form' %>
+        <%= link_to 'Voir', [@hotel, @room] %> |
+        <%= link_to 'Retour', @hotel %>
+    </div>
+</div>

@@ -1,5 +1,7 @@
-<h1>New Room</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', hotels_path(@hotel) %>
+<div class="formulaire_center formulaire_margin2">
+  <div class="bloc">
+      <h2>Ajouter une chambre</h2>
+        <%= render 'form' %>
+        <%= link_to 'Retour', hotels_path(@hotel) %>
+    </div>
+</div>

@@ -19,13 +19,13 @@
   <thead>
     <tr>
     <% if user_signed_in? && current_user.sup_admin? %>
-      
+        <th class="sizeColumnfirst">Photo</th> 
         <th>Name</th>  
         <th>Description</th>
         <th colspan="3">Actions</th>
       
     <% else %>
-    
+       <th>Photo</th> 
       <th>Name</th>  
       <th>Description</th>
       
@@ -41,6 +41,7 @@
       <tr>
        
         <% if user_signed_in? && current_user.sup_admin? %>
+          <td><%= link_to image_tag hotel.photo(:medium), hotel %>
           <td><%= link_to hotel.name, hotel %></td>
           <td><%= hotel.description %></td>
           <td><%= link_to 'Show', hotel %></td>
@@ -48,7 +49,7 @@
           <td><%= link_to 'Destroy', hotel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         
         <% else %>
-        
+          <td><%= link_to image_tag hotel.photo(:medium), hotel %></td>
           <td><%= link_to hotel.name, hotel %></td>
           <td><%= hotel.description %></td>
           

@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>Liste de nos hôtels</h1>
-<div style="text-align:right;">
+<div style="text-align:left; margin-top:60px; margin-left:210px;">
   <%= search_form_for @q do |f| %>
   <%= f.label :rechercher_un_hôtel %>
   <%= f.search_field :address_cont %>
@@ -52,7 +51,7 @@
     <% end %>
   </tbody>
 </table>
-<div style="margin-bottom:8cm;">
+<div style="margin-bottom:8cm; margin-left:210px;">
     <% if user_signed_in? && current_user.sup_admin? %>
       <%= link_to 'Ajouter un hôtel', new_hotel_path %>
     <% else %>  

@@ -3,11 +3,14 @@ class Reservation < ActiveRecord::Base
     belongs_to :room
     validates :leaved_at, :arrived_at, :room, presence: true
     validate :leaved_at_cannot_be_before_arrived_at
-    validate :room_is_already_booked
+
     
+    def nbnuit
+        (leaved_at - arrived_at).to_i
+    end
     
     def totalprice
-        (leaved_at - arrived_at).to_i * room.price
+        nbnuit.to_i * room.price
     end
     
     def totalprice_cents

@@ -5,20 +5,31 @@
         <p><%= flash[:error] %></p>
       </div>
     <% end %>
-    <label class="amount">
-      <span>Résumé de votre reservation pour l'hôtel <%= @hotel.name %></span><br>
-      <span>Vos coordonnées <%= @user.email %></span><br>
-      <span>Type de chambre "<%= @room.name %>" </span><br>
-      <span>Pour la période du <%= @reservation.arrived_at %> au <%= @reservation.leaved_at %></span><br>
-      <span>Prix d'une nuitée <%= @room.price %>$</span><br>
-      <span>Nombre de nuit <%= @reservation.nb_night %></span><br>
-      <span>Prix total de votre réservation <%= @reservation.totalprice %>$</span>
-    </label>
+
+    
+    <div class="formulaire_center formulaire_margin4">
+        <div class="bloc">
+          <h2>Réservation</h2>
+            <label class="amount">
+              <span>Résumé de votre reservation pour l'hôtel <%= @hotel.name %></span><br>
+              <span>Vos coordonnées <%= @user.email %></span><br>
+              <span>Type de chambre "<%= @room.name %>" </span><br>
+              <span>Pour la période du <%= @reservation.arrived_at %> au <%= @reservation.leaved_at %></span><br>
+              <span>Prix d'une nuitée <%= @room.price %>$</span><br>
+              <span>Nombre de nuit <%= @reservation.nbnuit %></span><br>
+              <span>Prix total de votre réservation <%= @reservation.totalprice %>$</span>
+            </label>
+              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Paiement de votre réservation"
+              data-amount="<%= @reservation.totalprice_cents %>"
+              data-locale="auto"></script>
+              <% end %>
+        </div>
+    </div>
+    
+
   </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Paiement de votre réservation"
-          data-amount="<%= @reservation.totalprice_cents %>"
-          data-locale="auto"></script>
-<% end %>
+
+

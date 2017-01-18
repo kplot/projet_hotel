@@ -6,8 +6,8 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Résumé de votre reservation pour l'hôtel....</span><br>
-      <span>Vos coordonnées....</span><br>
+      <span>Résumé de votre reservation pour l'hôtel <%= @hotel.name %></span><br>
+      <span>Vos coordonnées <%= @user.email %></span><br>
       <span>Type de chambre "<%= @room.name %>" </span><br>
       <span>Pour la période du <%= @reservation.arrived_at %> au <%= @reservation.leaved_at %></span><br>
       <span>Prix d'une nuitée <%= @room.price %>$</span><br>

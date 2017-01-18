@@ -14,7 +14,7 @@ class HotelDashboard < Administrate::BaseDashboard
     description: Field::Text,
     phone: Field::String,
     address: Field::String,
-    photo: Field::String,
+    photo: PaperclipField,
     homepage: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,

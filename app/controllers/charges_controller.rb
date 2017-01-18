@@ -2,6 +2,8 @@ class ChargesController < ApplicationController
     def new
       @reservation = Reservation.find(params[:reservation_id])
       @room = @reservation.room
+      @hotel = @room.hotel
+      @user = @reservation.user
     end
     
     def create

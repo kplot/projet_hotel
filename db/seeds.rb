@@ -39,7 +39,7 @@
       :email                 => "test4@gmail.com",
       :password              => "123456",
       :role                  => "admin",
-      :created_at            => "2016-01-17 18:02:05"
+      :created_at            => "2017-01-17 18:02:05"
   )
   user4.skip_confirmation!
   user4.save!
